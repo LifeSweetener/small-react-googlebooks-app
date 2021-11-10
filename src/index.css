@@ -1,0 +1,10 @@
+.App {
+	font-family: "Times New Roman";
+	font-size: 5vh;
+	color: #eeee11;
+	padding: 15vh 33vw;
+	width: 100vw;
+	height: 50vh;
+	background-image: url("https://image.shutterstock.com/z/stock-photo-blur-image-of-picture-library-background-library-resources-including-vast-knowledge-and-sun-light-604328939.jpg");
+	background-position: 0vw 0vh;
+}
