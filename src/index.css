@@ -8,3 +8,70 @@
 	background-image: url("https://image.shutterstock.com/z/stock-photo-blur-image-of-picture-library-background-library-resources-including-vast-knowledge-and-sun-light-604328939.jpg");
 	background-position: 0vw 0vh;
 }
+
+.form {
+	margin: 2vh -3vw;
+}
+
+.form Button {
+	font-family: "Times New Roman";
+	font-size: 5vh;
+	color: #efef22;
+	background: #FFA07A;
+	font-weight: bold;
+	border: 0.01em ridge red;
+	
+	transition: all 0.2s ease;
+}
+
+.form Button:hover {
+	color: #f5f533;
+	background: #FFA500;
+	font-weight: bold;
+	cursor: pointer;
+	border: 0.01em outset red;
+}
+
+.form Button:active {
+	color: #ffff77;
+	background: #FF8C00;
+	font-weight: bold;
+	cursor: pointer;
+	border: 0.01em inset red;
+}
+
+.form Input {
+	font-family: "Times New Roman";
+	font-size: 5vh;
+	font-weight: bold;
+	margin-right: 2vw;
+}
+
+.form #category {
+	font-family: "Times New Roman";
+	font-size: 5vh;
+	font-weight: bold;
+	margin-right: 2vw;
+	cursor: pointer;
+}
+
+.form #category, #sorting {
+	font-family: "Times New Roman";
+	font-size: 5vh;
+	font-weight: bold;
+	margin-right: 2vw;
+	cursor: pointer;
+}
+
+.form Label {
+	font-family: "Times New Roman";
+	font-size: 4vh;
+	font-weight: 500;
+	font-weight: bold;
+	color: pink;
+}
+
+.Results {
+	font-family: "Times New Roman";
+	font-size: 5vh;
+}

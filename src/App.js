@@ -22,82 +22,58 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 
 // Импорт redux-хранилища из файла "index.js", где оно создаётся
-import store from './index.js'
+import {store, set_store, delete_store} from './index.js'
 
 import {
-  InputGroup,
-  Input,
-  InputGroupAddon,
-  Button,
-  FormGroup,
-  Label,
-  Spinner
+	Input,
+	Button,
+	Label,
+	Spinner
 } from 'reactstrap';
 
-import ui_elements from './form.js'
+import Gui from './form.js'
 
 // Файл со стилями:
 import './index.css';
-
-/* Функция для изменения хранилища - выводимой библиотеки книг в результате поиска */
-function set_store(value) {
-    return {
-        type: 'SET_BOOKS',
-        payload: value
-    };
-}
-
-/*
-	Компонент-функция, который предназначен для вывода библиотеки книг
-(то есть вывода хранилища Redux).
-Параметр "props" у нас в функции не используется!
-*/
-function Output(props) {
-	const books = store.getState().books;  // получаем книги из центрального redux-хранилища 
-	let output = [];  // готовим новый массив для вывода каждой книги
-	
-	// Ниже в цикле мы засовываем поочерёдно книги из хранилища "Redux":
-	for (let i = 0; i < books.length; ++i)
-		output.push(<li id='i'>{books[i]}</li>);
-	
-	return output;  // выводим на страницу созданный список книг
-}
-
-var flag = false;
 
 /*
 	Компонент, представляющий собой главное приложение с
 нужной в задании функциональностью.
 Параметр "props" в этой функции также не используется!
 */
-function App(props) {
-	const dispatch = useDispatch();  // этот объект предоставляет доступ к хранилищу "Redux"
+class App extends React.Component {
+	
 	//const storage = useSelector(state => props.store.books);
-	store.subscribe(Output);  // при изменении хранилища обновить данные страницы сайта
 	
-	// используем инструмент "axios" для возможности отправки на сторонний сервер запросов
-	// и получения от него ответов:
-	axios.get(`https://www.googleapis.com/books/v1/volumes?q=potter&maxResults=3`)
-	.then(res => {
-		const data = res.data;  // получаем json-ответ от сервера и сохраняем его
+	//const dispatch = useDispatch();  // этот объект предоставляет доступ к хранилищу "Redux"
+	
+	render() {
+		const title = 'Search for books';  // заголовок страницы поиска книг
+		//store.subscribe(render);  // при изменении хранилища обновить данные страницы сайта
+		const books = store.getState().books;  // получаем книги из центрального redux-хранилища
 		
-		// перебираем элементы в полученном json'е для сохранения
-		// очередной книги в центральном redux-хранилище:
-		for (let i = 0; i < data.items.length; ++i) {
-			const item = data.items[i];
-			store.dispatch(set_store(item.volumeInfo.title));
-		}
-	});
-	
-	const title = 'Search for books';  // заголовок страницы поиска книг
-	
-	return (
-		<div className="App">
-			<h1>{title}</h1>
-				{ui_elements()}
-			<ul><Output /></ul>
-		</div>
-	);
+		if (books == null)
+			return null;
+		
+		let output = [];  // готовим новый массив для вывода каждой книги
+		
+		// Ниже в цикле мы засовываем поочерёдно книги из хранилища "Redux":
+		for (let i = 0; i < books.length; ++i)
+			output.push(<li id='i'>{books[i]}</li>);
+		
+		// Выводим:
+		return (
+			<div>
+				<div className="App">
+					<h1>{title}</h1>
+						<Gui />
+				</div>
+				<div className="Results">
+					<ul>{output}</ul>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default App;

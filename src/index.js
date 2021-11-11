@@ -18,27 +18,48 @@ import {createStore} from 'redux';
 // Файл со стилями:
 import './index.css';
 
+// Элементы хранилища:
 const defaultState = {
 	books: []
 };
 
 const reducer = (state = defaultState, action) => {
 	switch (action.type) {
-		case 'SET_BOOKS':
-			if (state.books.indexOf(action.payload) == -1) {
-				let new_books = state.books.slice();
-				new_books.push(action.payload);
-				return {books:  new_books};
+		case 'SET_BOOKS':  // сохранить найденную книгу из поисковика Google в наше центральное хранилище "Redux"...
+			if ((state.books != null)&&(state.books.indexOf(action.payload) == -1)||(state.books == null)) {  // если наш массив с книгами для вывода пользователю не содержит найденную книгу, или он вообще пустой, то указать в нём новую книгу из результата поиска
+				let new_books = state.books != null ? state.books.slice() : [];  // если наш массив с книгами для показа его пользователю не пуст, то копировать его и сохранить в переменную "new_books", иначе - создать новый пустой массив
+				new_books.push(action.payload);  // засунуть в массив очередную книгу из результатов поиска пользователя
+
+				return {books:  new_books};  // обновить хранилище дозаполненным массивом с книгами
 			}
 			return state;
-		default:
+		case 'DELETE_BOOKS':  // очистить абсолютно всю нашу библиотеку с книгами для показа пользователю на странице сайта...
+			return {books:  null};
+		default:  // действие по умолчанию (ничего не делать)
 			return state;
 	}
-};
+}
 
-const store = createStore(reducer);
+/* Функция для изменения хранилища - выводимой библиотеки книг в результате поиска */
+const set_store = (value) => {
+	return {
+		type: 'SET_BOOKS',
+		payload: value
+	};
+}
 
-export default store;
+/* Функция для очистки содержимого нашего Redux-хранилища: */
+const delete_store = (value=null) => {
+	return {
+		type: 'DELETE_BOOKS',
+		payload: value
+	};
+}
+
+const store = createStore(reducer);  // наше центральное хранилище всего React-приложения
+
+export {store, set_store, delete_store};  // экспортировать все важные функции и само хранилище для других модулей нашего приложения
+
 
 ReactDOM.render(
 	<Provider store={store}>
