@@ -42,18 +42,32 @@ import './index.css';
 Параметр "props" в этой функции также не используется!
 */
 class App extends React.Component {
-	
 	//const storage = useSelector(state => props.store.books);
-	
 	//const dispatch = useDispatch();  // этот объект предоставляет доступ к хранилищу "Redux"
+	constructor(props) {
+		super(props);
+		this.state = {
+			books: []
+		}
+	}
+	
+	refresh = () => {
+		this.setState({books: store.getState().books});
+	}
 	
 	render() {
+		//  // при изменении хранилища обновить данные страницы сайта
+		
 		const title = 'Search for books';  // заголовок страницы поиска книг
-		//store.subscribe(render);  // при изменении хранилища обновить данные страницы сайта
 		const books = store.getState().books;  // получаем книги из центрального redux-хранилища
 		
 		if (books == null)
-			return null;
+			return (
+				<div className="App">
+					<h1>{title}</h1>
+						<Gui />
+				</div>
+			);
 		
 		let output = [];  // готовим новый массив для вывода каждой книги
 		
@@ -66,7 +80,7 @@ class App extends React.Component {
 			<div>
 				<div className="App">
 					<h1>{title}</h1>
-						<Gui />
+						<Gui refresh={this.refresh}/>
 				</div>
 				<div className="Results">
 					<ul>{output}</ul>
@@ -74,6 +88,7 @@ class App extends React.Component {
 			</div>
 		);
 	}
+	
 }
 
 export default App;

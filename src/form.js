@@ -18,10 +18,13 @@ import axios from 'axios';
 // Импорт redux-хранилища из файла "index.js", где оно создаётся
 import {store, set_store, delete_store} from './index.js'
 
+import App from './App.js'
+
 function Gui(props) {
 	const search = () => {
 		const value = document.getElementById('input').value;
-		
+		//props.refresh();
+		store.subscribe(props.refresh);
 		// используем инструмент "axios" для возможности отправки на сторонний сервер запросов
 		// и получения от него ответов:
 		axios.get(`https://www.googleapis.com/books/v1/volumes?q=${value}&maxResults=30`)
@@ -37,7 +40,6 @@ function Gui(props) {
 				}
 			});
 	}
-	
 	
 	return (
 		<div className="form">

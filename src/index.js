@@ -60,7 +60,6 @@ const store = createStore(reducer);  // наше центральное хран
 
 export {store, set_store, delete_store};  // экспортировать все важные функции и само хранилище для других модулей нашего приложения
 
-
 ReactDOM.render(
 	<Provider store={store}>
 		<App />
