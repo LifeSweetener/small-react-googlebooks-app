@@ -20,21 +20,28 @@ import './index.css';
 
 // Элементы хранилища:
 const defaultState = {
-	books: []
+	books: [],
+	total: 0
 };
 
 const reducer = (state = defaultState, action) => {
 	switch (action.type) {
 		case 'SET_BOOKS':  // сохранить найденную книгу из поисковика Google в наше центральное хранилище "Redux"...
-			if ((state.books != null)&&(state.books.indexOf(action.payload) == -1)||(state.books == null)) {  // если наш массив с книгами для вывода пользователю не содержит найденную книгу, или он вообще пустой, то указать в нём новую книгу из результата поиска
-				let new_books = state.books != null ? state.books.slice() : [];  // если наш массив с книгами для показа его пользователю не пуст, то копировать его и сохранить в переменную "new_books", иначе - создать новый пустой массив
-				new_books.push(action.payload);  // засунуть в массив очередную книгу из результатов поиска пользователя
-
-				return {books:  new_books};  // обновить хранилище дозаполненным массивом с книгами
-			}
-			return state;
+			// Если наш массив с книгами для вывода пользователю не содержит найденную книгу,
+			// или он вообще пустой, то указать в нём новую книгу из результата поиска:
+			if (state.books != null)
+				for (let i = 0; i < state.books.length; ++i)
+					if (JSON.stringify(state.books[i]) == JSON.stringify(action.payload))
+						return state;
+			
+			let new_books = state.books != null ? state.books.slice() : [];  // если наш массив с книгами для показа его пользователю не пуст, то копировать его и сохранить в переменную "new_books", иначе - создать новый пустой массив
+			new_books.push(action.payload);  // засунуть в массив очередную книгу из результатов поиска пользователя
+			return {books:  new_books, total: state.total};  // обновить хранилище дозаполненным массивом с книгами
 		case 'DELETE_BOOKS':  // очистить абсолютно всю нашу библиотеку с книгами для показа пользователю на странице сайта...
-			return {books:  null};
+			return {books:  [], total: 0};
+		case 'SET_TOTAL':
+			const new_total = action.payload;
+			return {books: state.books, total: new_total};
 		default:  // действие по умолчанию (ничего не делать)
 			return state;
 	}
@@ -49,16 +56,24 @@ const set_store = (value) => {
 }
 
 /* Функция для очистки содержимого нашего Redux-хранилища: */
-const delete_store = (value=null) => {
+const delete_store = (value=[]) => {
 	return {
 		type: 'DELETE_BOOKS',
 		payload: value
 	};
 }
 
+/* Установить общее число найденных произведений: */
+const set_total = (value) => {
+	return {
+		type: 'SET_TOTAL',
+		payload: value
+	};
+}
+
 const store = createStore(reducer);  // наше центральное хранилище всего React-приложения
 
-export {store, set_store, delete_store};  // экспортировать все важные функции и само хранилище для других модулей нашего приложения
+export {store, set_store, delete_store, set_total};  // экспортировать все важные функции и само хранилище для других модулей нашего приложения
 
 ReactDOM.render(
 	<Provider store={store}>

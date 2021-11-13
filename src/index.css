@@ -3,17 +3,19 @@
 	font-size: 5vh;
 	color: #eeee11;
 	padding: 15vh 33vw;
-	width: 100vw;
+	width: 34vw;
 	height: 50vh;
 	background-image: url("https://image.shutterstock.com/z/stock-photo-blur-image-of-picture-library-background-library-resources-including-vast-knowledge-and-sun-light-604328939.jpg");
 	background-position: 0vw 0vh;
+	background-repeat: no-repeat;
 }
 
 .form {
 	margin: 2vh -3vw;
+	width: 45vw;
 }
 
-.form Button {
+Button {
 	font-family: "Times New Roman";
 	font-size: 5vh;
 	color: #efef22;
@@ -24,7 +26,7 @@
 	transition: all 0.2s ease;
 }
 
-.form Button:hover {
+Button:hover {
 	color: #f5f533;
 	background: #FFA500;
 	font-weight: bold;
@@ -32,7 +34,7 @@
 	border: 0.01em outset red;
 }
 
-.form Button:active {
+Button:active {
 	color: #ffff77;
 	background: #FF8C00;
 	font-weight: bold;
@@ -40,22 +42,14 @@
 	border: 0.01em inset red;
 }
 
-.form Input {
+Input {
 	font-family: "Times New Roman";
 	font-size: 5vh;
 	font-weight: bold;
 	margin-right: 2vw;
 }
 
-.form #category {
-	font-family: "Times New Roman";
-	font-size: 5vh;
-	font-weight: bold;
-	margin-right: 2vw;
-	cursor: pointer;
-}
-
-.form #category, #sorting {
+#category {
 	font-family: "Times New Roman";
 	font-size: 5vh;
 	font-weight: bold;
@@ -63,7 +57,15 @@
 	cursor: pointer;
 }
 
-.form Label {
+#category, #sorting {
+	font-family: "Times New Roman";
+	font-size: 5vh;
+	font-weight: bold;
+	margin-right: 2vw;
+	cursor: pointer;
+}
+
+Label {
 	font-family: "Times New Roman";
 	font-size: 4vh;
 	font-weight: 500;
@@ -74,4 +76,94 @@
 .Results {
 	font-family: "Times New Roman";
 	font-size: 5vh;
+	background: #FFBFBF;
+	width: 100vw;
+}
+
+.Card {
+	background: #fafafa;
+	width: 30vw;
+	height: 10vh;
+	position: relative;
+	display: inline-block;
+	margin: 0.5vw;
+	z-index: 1;
+	
+	transition: all 0.3s ease;
+}
+
+.Card:hover {
+	background: #fffcfc;
+	width: 35vw;
+	height: 15vh;
+	font-size: 6vh;
+	margin: 0;
+	z-index: 2;
+	cursor: pointer;
+}
+
+.Card .CardBody {
+	background: inherit;
+	text-align: center;
+}
+
+.Card .CardTitle {
+	font-weight: bold;
+}
+
+.Card .CardSubtitle {
+	font-weight: bold;
+	color: HotPink;
+}
+
+.Total {
+	margin: 1vh 22vw;
+	font-size: 10vh;
+	color: #fdfdfd;
+}
+
+.Spinner-hidden {
+	display: none;
+	color: yellow;
+	'font-weight': bold;
+	'text-align': center;
+}
+
+.Spinner-shown {
+	display: flex;
+	color: yellow;
+	'font-weight': bold;
+	'text-align': center;
+}
+
+.Card-visible {
+	display: inline;
+	transition: all 0.3s ease;
+}
+
+.Card-visible>p {
+	font-family: "Times New Roman";
+	font-size: 5vh;
+	width: 60vw;
+	margin: 2vh 25vw;
+	background: #FFBFBF;
+}
+
+.Card-visible>img {
+	margin: 2vh 30vw;
+	background: #FFBFBF;
+}
+
+.Card-visible>#desc:hover {
+	background: #EEEEEE;
+	font-weight: normal;
+}
+
+.Card-visible:hover {
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.Card-invisible {
+	display: none;
 }
