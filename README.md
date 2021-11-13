@@ -20,5 +20,5 @@
   <li>ru.reactjs.org (благодарю <b>переводчиков документации по Реакту и её авторов</b>!),</li>
   <li>https://www.digitalocean.com/community/tutorials/4-uses-of-javascripts-arraymap-you-should-know-ru (укажу ещё и эту статью автора <b>William Imoh</b> про функцию map в JS).</li>
   </ol>
-  Можно ещё много кого упомянуть, поэтому говорю всем авторам замечательных статей по JS, CSS, HTML, React, reactstrap, axios, Redux и дрдрдр огромное спасибо!)
+  <b>Можно ещё много кого упомянуть, поэтому говорю всем авторам замечательных статей по JS, CSS, HTML, React, reactstrap, axios, Redux и дрдрдр огромное спасибо!)</b>
 </p>
