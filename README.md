@@ -13,7 +13,7 @@
  <li>https://habr.com/ru/post/498860/ ("Введение в Redux & React-redux" — автор <b>@Elliot_001</b>),</li>
  <li>https://www.cat-in-web.ru/10-ways-to-style-react/#%D0%98%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD_%D1%81%D1%82%D0%B8%D0%BB%D0%B8 (хорошая статья — тут есть инфа про инлайн-стили в React),</li>
  <li>https://askdev.ru/q/vstavka-html-elementov-s-pomoschyu-javascript-24974/3/ (про вставку html-кода в JavaScript'е в нужный тебе элемент — автор вопроса <b>Robinicks</b> и автор ответа <b>Mathias Bynens</b>),</li>
- <li><https://developer.mozilla.org/ru/docs/Web/CSS/display (во многом мне помогал и этот сайт!),/li>
+ <li>https://developer.mozilla.org/ru/docs/Web/CSS/display (во многом мне помогал и этот сайт!),</li>
   <li>https://dwweb.ru/page/js/events/001_onclick_v_javascript.html (ребята из проекта <b>DWWEB.RU</b> в своей статье подробно с примерами рассказывают про событие onClick в JS),</li>
   <li>https://developers.google.com/books/docs/v1/using (конечно же, спасибо <b>разработчикам Google-книг</b> за написание небольшой и в то же время подробной и понятной документации про их <b>GOOGLE BOOKS API</b>),</li>
   <li>https://www.youtube.com/watch?v=kL3H-wTWPSQ (огромное спасибо <b>Congar</b> за видео на эту же тему про ReactJS и Google Books API и выложенный репозиторий на Гитхабе с исходниками — https://github.com/Mohammed-Abdelhady/google-books-search!!),</li>
