@@ -39,8 +39,7 @@ import './index.css';
 
 /*
 	Компонент, представляющий собой главное приложение с
-нужной в задании функциональностью.
-Параметр "props" в этой функции также не используется!
+нужной в задании функциональностью:
 */
 class App extends React.Component {
 	constructor(props) {
@@ -70,7 +69,7 @@ class App extends React.Component {
 		и показать эту более подробную информацию пользователю:
 		*/
 		for (let i = 0; i < this.state.books.length; ++i) {
-			if (this.state.books[i].thumbnail == card.id) {
+			if (this.state.books[i].thumbnail == card.id) {  // id наших карточек - это ссылки на обложки соответствующих книг (они же уникальны))
 				card_info.className = "Card-visible";  // показать блок с подробной информацией о книге
 				results.className = "Card-invisible";  // скрыть блок с результатами поиска
 				card_info.onclick = this.hide_card;  // привязать обработчик нажатия по показанному только что блоку (это нужно, чтобы выйти из этого блока с детальной информацией)
